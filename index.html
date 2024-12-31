@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Missão Impossível</title>
+    <style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: rgb(31, 34, 37);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .wrapper {
+        display: flex;
+        align-items: center;
+        position: relative; /* Torna a posição do wrapper o ponto de referência */
+    }
+
+    .container {
+        width: 500px;
+        height: 500px;
+        background-color: rgb(15, 15, 15);
+        border-radius: 50%;
+        border: 15px solid rgb(141, 141, 141);
+        position: relative;
+        overflow: hidden;
+        transition: 5s;
+    }
+
+    .container div {
+        height: 50%;
+        width: 200px;
+        position: absolute;
+        clip-path: polygon(100% 0, 50% 100%, 0 0);
+        transform: translateX(-50%);
+        transform-origin: bottom;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: sans-serif;
+        color: #fff;
+        left: 135px;
+    }
+
+    .container .one {
+        background-color: rgb(51, 51, 51);
+        left: 50%;
+    }
+    .container .two {
+        background-color: rgb(197, 197, 197);
+        transform: rotate(45deg);
+    }
+    .container .three {
+        background-color: rgb(224, 224, 224);
+        transform: rotate(90deg);
+    }
+    .container .four {
+        background-color: rgb(56, 56, 56);
+        transform: rotate(135deg);
+    }
+    .container .five {
+        background-color: rgb(32, 32, 32);
+        transform: rotate(180deg);
+    }
+    .container .six {
+        background-color: rgb(190, 190, 190);
+        transform: rotate(225deg);
+    }
+    .container .seven {
+        background-color: rgb(71, 71, 71);
+        transform: rotate(270deg);
+    }
+    .container .eight {
+        background-color: rgb(202, 202, 202);
+        transform: rotate(315deg);
+    }
+
+    .arrow {
+        position: absolute;
+        top: -80px; /* Ajusta para ficar no topo do container */
+        left: 33%;
+        font-size: 70px; /* Tamanho da seta */
+        color: #fff;
+        transform: translateX(-50%); /* Gira a seta para apontar para baixo */
+        z-index: 15; /* Garante que a seta fique acima da roleta */
+    }
+
+    #spin {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        background-color: transparent;
+        border: none;
+        font-size: 0;
+        width: 80px;
+        height: 80px;
+        cursor: pointer;
+    }
+
+    .description {
+        margin-left: 30px;
+        font-family: sans-serif;
+        color: #fff;
+    }
+
+    .description h3 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .description p {
+        font-size: 16px;
+        margin: 5px 0;
+    }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="one">1.</div>
+            <div class="two">2.</div>
+            <div class="three">3.</div>
+            <div class="four">4.</div>
+            <div class="five">5.</div>
+            <div class="six">6.</div>
+            <div class="seven">7.</div>
+            <div class="eight">8.</div>
+
+            <!-- Botão de girar no centro da roleta (sem texto e sem borda) -->
+            <button id="spin"></button>
+        </div>
+
+        <!-- A seta foi ajustada para o topo do container -->
+        <div class="arrow">↓</div>
+        
+        <div class="description">
+            <h3>Significado dos números:</h3>
+            <p><strong>1.</strong> Tapa Drop</p>
+            <p><strong>2.</strong> Tiro Cego</p>
+            <p><strong>3.</strong> Caçador de Facas</p>
+            <p><strong>4.</strong> Sem Defesa</p>
+            <p><strong>5.</strong> Tiro Premiado</p>
+            <p><strong>6.</strong> No Reload</p>
+            <p><strong>7.</strong> Final Pacifista</p>
+            <p><strong>8.</strong> Só Pistola</p>
+        </div>
+    </div>
+
+    <script>
+    let container = document.querySelector(".container");
+    let btn = document.getElementById("spin");
+    let number = Math.ceil(Math.random() * 1000);
+
+    btn.onclick = function () {
+        container.style.transform = "rotate(" + number + "deg)";
+        number += Math.ceil(Math.random() * 1000);
+    };
+    </script>
+</body>
+</html>
